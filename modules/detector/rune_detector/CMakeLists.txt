@@ -1,0 +1,2 @@
+VisCore_add_module(rune_detector
+DEPENDS detector rune_group) 

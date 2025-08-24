@@ -1,0 +1,46 @@
+# 配置文件
+.vscode
+.idea
+
+# 编译文件
+*build*
+*.o
+*.so
+*.a
+
+# 媒体文件
+*.mp4
+*.avi
+*.flv
+*.csv
+*.webm
+
+# 图像文件
+*.png
+*.jpg
+*.jpeg
+!srvl-logo*
+
+# 模型文件
+# *.onnx
+*.pth
+# *.xml
+!package.xml
+# 日志数据类文件
+CHANGELOG.md
+log
+Camera
+
+# 参数文件
+#*.yml
+config_path.h
+
+# 其他文件
+*.zip
+*srctrl*
+*bin
+.cache
+arms/Hero/ov_models
+gyro.txt
+Doxyfile
+docs/*

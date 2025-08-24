@@ -1,0 +1,27 @@
+%YAML:1.0
+---
+TRACK_FRAMES: 20
+SAMPLE_INTERVAL: 6.
+ROTATE_Q: !!opencv-matrix
+   rows: 2
+   cols: 2
+   dt: f
+   data: [ 1., 0., 0., 1. ]
+ROTATE_R: !!opencv-matrix
+   rows: 2
+   cols: 2
+   dt: f
+   data: [ 1., 0., 0., 5. ]
+MOTION_Q: !!opencv-matrix
+   rows: 4
+   cols: 4
+   dt: f
+   data: [ 1., 0., 0., 0., 0., 1., 0., 0., 0., 0., 1., 0., 0., 0., 0.,
+       1. ]
+MOTION_R: !!opencv-matrix
+   rows: 4
+   cols: 4
+   dt: f
+   data: [ 1., 0., 0., 0., 0., 1., 0., 0., 0., 0., 100., 0., 0., 0., 0.,
+       100. ]
+MAX_DEQUE_SIZE: 300

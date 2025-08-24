@@ -1,0 +1,2 @@
+VisCore_add_module(rune_tracker
+DEPENDS rune_combo) 

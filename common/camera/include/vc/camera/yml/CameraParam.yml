@@ -1,0 +1,47 @@
+%YAML:1.0
+---
+exposure: 4300
+gamma: 100
+brightness: 15
+contrast: 100
+saturation: 100
+sharpness: 100
+gain: 8
+b_gain: 2232
+g_gain: 1024
+r_gain: 1628
+grab_mode: 1
+retrieve_mode: 1
+auto_exposure: 0
+auto_wb: 0
+cameraMatrix: !!opencv-matrix
+   rows: 3
+   cols: 3
+   dt: f
+   data: [ 1.61335217e+03, 0., 6.93771606e+02, 0., 1.58594580e+03,
+       5.91027893e+02, 0., 0., 1. ]
+distCoeff: !!opencv-matrix
+   rows: 5
+   cols: 1
+   dt: f
+   data: [ -5.49999997e-02, -4.72000018e-02, 3.89999989e-03,
+       5.49999997e-03, 6.20000018e-03 ]
+camera2joint_euler_angle: !!opencv-matrix
+   rows: 3
+   cols: 1
+   dt: f
+   data: [ 0., -13., 0. ]
+cam2joint_rmat: !!opencv-matrix
+   rows: 3
+   cols: 3
+   dt: f
+   data: [ 1., 0., 0., 0., 1., 0., 0., 0., 1. ]
+cam2joint_tvec: !!opencv-matrix
+   rows: 3
+   cols: 1
+   dt: f
+   data: [ -55., -40., 1.65539993e+02 ]
+lut_vec: []
+serial_number: DA5555072
+image_width: 1440
+image_height: 1080
