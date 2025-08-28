@@ -32,4 +32,7 @@ struct DetectorInput
 
     /// @brief 识别颜色（目标通道，如红/蓝）
     DEFINE_PROPERTY(Color, public, public, (PixChannel));
+    
+    /// @brief 识别颜色阈值（用于二值化或颜色过滤）
+    DEFINE_PROPERTY(ColorThresh, public, public, (int));
 };

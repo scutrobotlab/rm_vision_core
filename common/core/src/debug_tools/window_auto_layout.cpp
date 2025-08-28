@@ -5,7 +5,7 @@ WindowAutoLayout::Ptr WindowAutoLayout::get()
     static WindowAutoLayout::Ptr instance = []() -> Ptr
     {
         auto result = std::make_shared<WindowAutoLayout>(cv::Size(1920, 1080), cv::Size(320, 240));
-        result->_debug_setAnimation(false, 30, 15);
+        result->_debug_setAnimation(true, 30, 15);
         return result;
     }();
     return instance;
@@ -70,7 +70,7 @@ void WindowAutoLayout::relayout()
 }
 
 /**
- * @brief 设置内部动画（对外 API 不暴露业务参数，仅用于开发/调试）
+ * @brief 设置内部动画
  * @param enabled 是否启用
  * @param duration_ms 单次过渡时长（毫秒）
  * @param steps 插值帧数（越大越顺滑）

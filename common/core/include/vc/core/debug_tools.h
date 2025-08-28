@@ -64,6 +64,11 @@ public:
      */
     void show(const std::string &winName = "Debug");
 
+    /**
+     * @brief 获取窗口名称]
+     */
+    std::string getWindowName() const { return "Debug"; }
+
     // 禁止复制和赋值
     DebugTools(const DebugTools &) = delete;
     DebugTools &operator=(const DebugTools &) = delete;

@@ -74,7 +74,7 @@ Github 仓库地址：[rm_vision_core](https://github.com/scutrobotlab/rm_vision
 ### 4.3 数据流图
 
  整体设计采用逐层组装的思路：从基础特征的识别入手，逐步向上构建更高层级的结构，并在每一层解算所需的计算信息。各特征节点之间统一通过 `FeatureNode_ptr` 接口进行连接和交互。
- 
+
 <p align="center"> <img width="800" alt="Image" src="https://github.com/user-attachments/assets/e20a4e1d-419f-492c-8ee1-fbd6067fcbb4" /> </p> <p align="center">图4.3.1</p>
 
 
@@ -319,6 +319,101 @@ Github 仓库地址：[rm_vision_core](https://github.com/scutrobotlab/rm_vision
 
 - C++20、OpenCV 4.70 、 Eigen3
 
+#### 4.6.1 项目环境配置说明
+
+- 本项目基于 **C++20** 和 **OpenCV4** 开发，主要运行环境为 **Ubuntu 22.04**。  
+- 构建工具链使用 **CMake ≥ 3.15**，并依赖 **Ceres Solver 3** 与 OpenCV 4.7.0。
+
+---
+
+
+
+#### 4.6.2 环境要求
+
+| 组件         |             版本/说明 |
+| :----------- | --------------------: |
+| 操作系统     |   Ubuntu 22.04 (推荐) |
+| 编译器       | g++ ≥ 11 (支持 C++20) |
+| CMake        |                ≥ 3.15 |
+| OpenCV       |                 4.7.0 |
+| Ceres Solver |                   3.x |
+
+---
+
+#### 4.6.3 安装依赖工具链
+
+```bash
+sudo apt install -y build-essential cmake git pkg-config
+```
+
+#### 4.6.4 安装 OpenCV 4.7.0
+
+```bash
+# 安装依赖
+sudo apt install -y libgtk-3-dev libavcodec-dev libavformat-dev libswscale-dev \
+    libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libdc1394-22-dev
+
+# 下载源码
+git clone -b 4.7.0 https://github.com/opencv/opencv.git
+git clone -b 4.7.0 https://github.com/opencv/opencv_contrib.git
+
+# 构建
+cd opencv
+mkdir build && cd build
+cmake -D CMAKE_BUILD_TYPE=Release \
+      -D CMAKE_INSTALL_PREFIX=/usr/local \
+      -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules ..
+make -j$(nproc)
+sudo make install
+
+```
+
+安装完成后，可通过以下命令确认版本：
+
+```bash
+pkg-config --modversion opencv4
+```
+
+#### 4.6.5 安装 Ceres Solver 3.x
+
+```bash
+sudo apt install -y libgoogle-glog-dev libgflags-dev \
+    libeigen3-dev libsuitesparse-dev
+
+git clone https://ceres-solver.googlesource.com/ceres-solver
+cd ceres-solver
+git checkout 3.0.0   # 或其他稳定版本
+mkdir build && cd build
+cmake ..
+make -j$(nproc)
+sudo make install
+```
+
+#### 4.6.6 构建项目
+
+在项目根目录下：
+
+```bash
+mkdir -p build
+cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make -j$(nproc)
+```
+
+#### 4.6.7 运行程序
+
+1. 准备测试视频路径：
+2. 运行程序，并传入视频路径。
+
+在项目根目录下：
+
+```bash
+cd bin
+./VisCore_rune_detect_demo_exe -i <视频路径>
+```
+
+
+
 ## 5. 扇叶角点识别原理
 
 ### 5.1 条状突起检测
@@ -352,14 +447,14 @@ Github 仓库地址：[rm_vision_core](https://github.com/scutrobotlab/rm_vision
 ### 5.2 轮廓的链码化
 
 - 链码是一种用方向序列来表示轮廓的方法。假设我们有一个由像素点组成的物体边界，链码会按照一定顺序（如顺时针）遍历边界像素，并用 **数字编码当前像素指向下一个像素的方向**。参考图5.2.1 [1] 的效果。
- 
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/89deba52-736d-43ab-93b1-d026243744bd" width="572" />
 </p>
 <p align="center">图5.2.1</p>
 
 - 我们先对扇叶进行二值化处理，得到图5.2.2
- 
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/841da63e-f3cd-4f90-8570-17cca47db06f" width="233" />
 </p>

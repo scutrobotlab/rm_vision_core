@@ -49,6 +49,7 @@ void RuneDetector::detect(DetectorInput &input, DetectorOutput &output)
     auto &tick = input.getTick();
     auto &gyro_data = input.getGyroData();
     auto &color = input.getColor();
+    auto &color_thresh = input.getColorThresh();
 
     if (groups.size() > 1)
         VC_THROW_ERROR("Size of the argument \"groups\" is greater than 1");
@@ -67,10 +68,9 @@ void RuneDetector::detect(DetectorInput &input, DetectorOutput &output)
 
     auto rune_group = dynamic_pointer_cast<RuneGroup>(groups.front());
     // 二值化处理图像
-    int thesh = color == RED ? rune_detector_param.GRAY_THRESHOLD_RED : rune_detector_param.GRAY_THRESHOLD_BLUE;
 
     Mat bin;
-    binary(input_image, bin, color, thesh);
+    binary(input_image, bin, color, color_thresh);
     WindowAutoLayout::get()->addWindow("Binary Image");
     imshow("Binary Image", bin);
 

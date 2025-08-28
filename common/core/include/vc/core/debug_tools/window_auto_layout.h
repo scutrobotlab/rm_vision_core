@@ -5,6 +5,7 @@
  * @date 2025-7-15
  */
 
+#pragma once
 #include <opencv2/opencv.hpp>
 #include <string>
 #include <vector>

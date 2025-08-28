@@ -126,6 +126,6 @@ void RuneTracker::drawFeature(cv::Mat &image, const DrawConfig_cptr &config) con
             color = Scalar(0, 255, 255);
         else if(type == RuneType::UNKNOWN || type == RuneType::UNSTRUCK)
             color = Scalar(255, 255, 255);
-        // drawCube(image, p, 500, 500, 300, color);
+        drawCube(image, p, 500, 500, 300, color);
     } while (0);
 }
